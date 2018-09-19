@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: risk
+    
+server:
+  port: 8888
+  
+eureka:
+  instance:
+      preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.serviceUrl.defaultZone}
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          
+feign:
+  hystrix:
+    enabled: false
+    
+logging:
+  config: /apps/config/logconfig/risk-logback.xml
